@@ -1,12 +1,14 @@
 .main-wrapper {
-    margin: 0 140px;
+    width: 1440px;
+    margin: 0 auto;
 }
 
 /* 헤더 스타일 시작 */
 .main-header-wrap{
     display: flex;
     align-items: center;
-    width: 1440px;
+    margin-top: 40px;
+    width: 1400px;
     height: 100%;
 }
 

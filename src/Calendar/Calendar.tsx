@@ -1,4 +1,5 @@
 import * as React from 'react'
+import './calendar.css'
 
 /**
  *  2021.01.14 | gomip | created
@@ -9,6 +10,6 @@ export const Calendar: React.FC = () => {
     // Function --------------------------------------------------------------------------------------------------------
     // Dom -------------------------------------------------------------------------------------------------------------
     return (
-        <div>hjihihi</div>
+        <div className='calendar-wrapper'>hjihihi</div>
     )
 }

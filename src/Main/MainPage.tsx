@@ -17,17 +17,38 @@ export const MainPage: React.FC = () => {
     return (
         <div className='main-wrapper'>
         {/* 헤더 시작 */}
-        <MainHeader />
+        <Row>
+            <Col flex='20px' />
+            <MainHeader />
+            <Col flex='20px' />
+        </Row>
         {/* 헤더 끝 */}
         
         {/* 바디 시작 */}
-        <Row justify='space-between'>
-            <Col flex={7}>
+        <Row>
+            {/* 좌측 20px 빈공간 시작 */}
+            <Col flex='20px' />
+            {/* 좌측 20px 빈공간 끝 */}
+
+            {/* 달력 시작 */}
+            <Col flex='1040px'>
                 <Calendar />
             </Col>
-            <Col flex={2}>
+            {/* 달력 끝 */}
+
+            {/* 사이 40px 시작 */}
+            <Col flex='40px'/>
+            {/* 사이 40px 끝 */}
+
+            {/* 사용자 시작 */}
+            <Col flex='320px'>
                 <InfoPage />
             </Col>
+            {/* 사용자 끝 */}
+
+            {/* 우측 20px 빈공간 시작 */}
+            <Col flex='20px' />
+            {/* 우측 20px 빈공간 끝 */}
         </Row>
         {/* 바디 끝 */}
         </div>

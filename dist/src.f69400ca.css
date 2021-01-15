@@ -54,14 +54,16 @@ code {
 }
 
 .main-wrapper {
-    margin: 0 140px;
+    width: 1440px;
+    margin: 0 auto;
 }
 
 /* 헤더 스타일 시작 */
 .main-header-wrap{
     display: flex;
     align-items: center;
-    width: 1440px;
+    margin-top: 40px;
+    width: 1400px;
     height: 100%;
 }
 
@@ -73,6 +75,7 @@ code {
 
 /* 컨테이너 시작 */
 /* 컨테이너 끝 */
+
 /*!
  * 
  * antd v4.10.2
@@ -28360,6 +28363,61 @@ div.ant-typography-edit-content.ant-typography-rtl {
 }
 
 
+
+.info-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.user-wrapper{
+    width: 100%;
+    height: 800px;
+    background-color: #61dafb;
+}
+
+.user-card{
+    width: 100%;
+    height: 70px;
+    background-color: #FFF7BC;
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+}
+
+.mt-27 {
+    margin-top: 27px;
+}
+
+.avt{
+    margin-left: 15px;
+}
+
+.user-ctn-wrapper{
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.user-ctn-wrapper p{
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0;
+}
+
+.log-wrapper{
+    margin-top: 50px;
+    width: 100%;
+    height: 400px;
+    background-color: darkslategray;
+}
+
+
+.calendar-wrapper{
+    height: 800px;
+    background-color: chartreuse;
+}
 
 
 /*# sourceMappingURL=/src.f69400ca.css.map */
