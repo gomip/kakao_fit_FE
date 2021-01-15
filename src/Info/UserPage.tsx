@@ -5,6 +5,7 @@ import {UserData} from "./UserData";
 /**
  * 2021.01.15 | gomip | created
  * @constructor
+ * 2021.01.15 | gomip | UserData는 추후에 api로 변경할것
  */
 
 const {useState} = React

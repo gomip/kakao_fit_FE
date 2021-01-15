@@ -8,6 +8,7 @@ import {Calendar} from "../Calendar/Calendar";
 
 /**
  *  2021.01.13 | gomip | created
+ *  2021.01.15 | gomip | Row, Col을 사용해서 화면 기본 배치도 작성
  */
 
 export const MainPage: React.FC = () => {
