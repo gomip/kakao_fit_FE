@@ -20,7 +20,7 @@ export const UserPage: React.FC = () => {
         <div className='user-wrapper'>
             {
                 UserData.map(item =>
-                    <UserCard userName={item.userName} userId={item.userId}/>
+                    <UserCard key={item.userId} userName={item.userName} userId={item.userId}/>
                 )
             }
             {/*<UserCard />*/}

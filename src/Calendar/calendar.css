@@ -2,3 +2,9 @@
     height: 800px;
     background-color: chartreuse;
 }
+
+.date-wrapper{
+    padding-top: 50px;
+    font-size: 26px;
+    font-weight: bold;
+}
