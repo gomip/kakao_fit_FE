@@ -46,11 +46,11 @@ export const Calendar: React.FC = () => {
                     {
                         Array(7).fill(0).map((n,i) => {
                             let current = today.clone().week(week).startOf('week').add(n + i, 'd')
-                            let isSelected = today.format('YYYYMMDD') === current.format('YYYYMMDD')
-                            let isGrayed = current.format('MM') === today.format('MM') ? '' : 'grayed'
+                            let isSelected = today.format('YYYYMMDD') === current.format('YYYYMMDD') ? 'selected' : ''
+                            let isGreyed = current.format('MM') === today.format('MM') ? '' : 'greyed'
 
                             return (
-                                <div className='box-day' key={i}>
+                                <div className={`box-day ${isGreyed} ${isSelected}` } key={i}>
                                     <span className='font-day'>{current.format('D')}</span>
                                 </div>
                             )

@@ -64,3 +64,11 @@
     border-color: #707070;
     border-style: solid;
 }
+
+.day-wrapper * .greyed {
+    color: grey;
+}
+
+.day-wrapper * .selected {
+    color: #588dff;
+}
