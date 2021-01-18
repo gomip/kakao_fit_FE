@@ -12,7 +12,8 @@ export const MainHeader: React.FC = () => {
     return (
         <div className='main-header-wrap'>
             <div>
-                <p className='main-header'>카카오 링피트 체커</p>
+                {/*<p className='main-header'>카카오 링피트 체커</p>*/}
+                <p className='main-header'>Calendar-user</p>
             </div>
         </div>
     )
