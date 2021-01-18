@@ -20,7 +20,7 @@ export const MainPage: React.FC = () => {
         {/* 헤더 시작 */}
         <Row>
             <Col flex='20px' />
-            <MainHeader />
+            {/*<MainHeader />*/}
             <Col flex='20px' />
         </Row>
         {/* 헤더 끝 */}
@@ -43,7 +43,7 @@ export const MainPage: React.FC = () => {
 
             {/* 사용자 시작 */}
             <Col flex='320px'>
-                <InfoPage />
+                {/*<InfoPage />*/}
             </Col>
             {/* 사용자 끝 */}
 

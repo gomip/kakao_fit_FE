@@ -1,10 +1,66 @@
 .calendar-wrapper{
     height: 800px;
-    background-color: chartreuse;
+    /*background-color: chartreuse;*/
+    padding: 0 30px;
 }
-
+/* 년 월 css */
 .date-wrapper{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0 20px;
+
     padding-top: 50px;
     font-size: 26px;
     font-weight: bold;
+}
+
+/* 요일 css */
+.week-wrapper{
+    margin-top: 35px;
+    display: flex;
+}
+
+.week-wrapper > .box-week{
+    width: 100px;
+    margin: 0 20px;
+}
+
+.week-wrapper * .font-week{
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.font-red{
+    color: red;
+}
+
+.font-blue{
+    color: blue;
+}
+
+.hr-line{
+    margin-top: 12px;
+    border: 1px solid black;
+}
+
+/* 일자 css */
+.day-wrapper{
+    margin: 20px 0;
+}
+
+.day-wrapper > .row {
+    margin: 10px 0;
+    display: flex;
+}
+
+.day-wrapper * .box-day {
+    margin: 0 20px;
+    width: 100px;
+    height: 80px;
+    background-color: white;
+    border-radius: 15px;
+    border-width: 1px;
+    border-color: #707070;
+    border-style: solid;
 }
