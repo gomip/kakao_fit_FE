@@ -11,15 +11,18 @@ const {useEffect, useState} = React
 
 export const Calendar: React.FC = () => {
     // State -----------------------------------------------------------------------------------------------------------
-    // const today = new Date()
-    // const [year, setYear] = useState<number>(today.getFullYear())                                                       // 현재 년도
-    // const [month, setMonth] = useState<number>(today.getMonth()+1)                                             // 현재 월
-    // const [day, setDay] = useState<number>(today.getDate())                                                             // 현재 일
+
+    let today = moment()
+    const startWeek = today.clone().startOf('month').week()
+    const endWeek = today.clone().endOf('month').week() === 1 ? 53 : today.clone().endOf('month').week()
 
     let monthName = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
     let dayName = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
 
     // LifeCycle -------------------------------------------------------------------------------------------------------
+    useEffect(() => {
+
+    }, [])
 
     // Function --------------------------------------------------------------------------------------------------------
     const handleLeft = () => {                                                                                          // 이전 월
@@ -35,9 +38,6 @@ export const Calendar: React.FC = () => {
     }
 
     function generateDay() {                                                                                         // 요일 박스 구현
-        const today = moment()
-        const startWeek = today.clone().startOf('month').week()
-        const endWeek = today.clone().endOf('month').week() === 1 ? 53 : today.clone().endOf('month').week()
         let calendar = []
 
         for (let week = startWeek ; week <= endWeek ; week++) {
@@ -69,7 +69,7 @@ export const Calendar: React.FC = () => {
             {/* 년 월 시작 */}
             <div className='date-wrapper'>
                 <LeftOutlined onClick={handleLeft}/>
-                {/*<span>{year}. {monthName[month]}</span>*/}
+                <span>{today.year()}. {today.month() + 1}</span>
                 <RightOutlined onClick={handleRight}/>
             </div>
             {/* 년 월 끝 */}
