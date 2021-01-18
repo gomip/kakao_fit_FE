@@ -21,20 +21,17 @@ export const Calendar: React.FC = () => {
 
     // LifeCycle -------------------------------------------------------------------------------------------------------
     useEffect(() => {
-
-    }, [])
+        generateDay()
+    }, [today])
 
     // Function --------------------------------------------------------------------------------------------------------
     const handleLeft = () => {                                                                                          // 이전 월
-        // setMonth(month - 1)
-        // console.log('year',year, 'month', month)
+        let a = today.subtract(1, 'month')
+        console.log('a',a)
     }
 
     const handleRight = () => {                                                                                         // 다음 월
-        // setMonth(month + 1)
-        // let a = moment('2021-01-17').add("1", "y").format("YYYY-MM-DD")
-        // console.log('year',year, 'month', month)
-        // console.log('a',a)
+        today.add(1, 'month')
     }
 
     function generateDay() {                                                                                         // 요일 박스 구현
@@ -69,7 +66,7 @@ export const Calendar: React.FC = () => {
             {/* 년 월 시작 */}
             <div className='date-wrapper'>
                 <LeftOutlined onClick={handleLeft}/>
-                <span>{today.year()}. {today.month() + 1}</span>
+                <span>{today.year()}. {monthName[today.month() + 1]}</span>
                 <RightOutlined onClick={handleRight}/>
             </div>
             {/* 년 월 끝 */}
