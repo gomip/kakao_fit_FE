@@ -46,8 +46,8 @@ export const Calendar: React.FC = () => {
                     {
                         Array(7).fill(0).map((n,i) => {
                             let current = today.clone().week(week).startOf('week').add(n + i, 'd')
-                            let isSelected = today.format('YYYYMMDD') === current.format('YYYYMMDD') ? 'selected' : ''
-                            let isGreyed = current.format('MM') === today.format('MM') ? '' : 'greyed'
+                            let isSelected = today.format('YYYYMMDD') === current.format('YYYYMMDD') ? 'selected' : ''  // 오늘 날짜 표시
+                            let isGreyed = current.format('MM') === today.format('MM') ? '' : 'greyed'    // 현재 월이 아닐경우 일자를 회색으로 칠해준다.
 
                             return (
                                 <div className={`box-day ${isGreyed} ${isSelected}` } key={i}>
