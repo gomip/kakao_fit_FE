@@ -22,7 +22,7 @@ export const UserCard: React.FC<UserCardProps> = (props) => {
     // Dom -------------------------------------------------------------------------------------------------------------
     return (
         <div className={userId !== '1' ? 'user-card mt-27' : 'user-card'}>
-            <Avatar size={56} className='avt' icon={<UserOutlined />}/>
+            {/*<Avatar size={56} className='avt' icon={<UserOutlined />}/>*/}
             <div className='user-ctn-wrapper'>
                 <p>{userName}</p>
             </div>
