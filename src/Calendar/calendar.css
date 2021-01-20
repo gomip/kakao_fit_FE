@@ -69,5 +69,5 @@
 }
 
 .day-wrapper * .selected {
-    color: #588dff;
+    border: 1px solid coral;
 }
