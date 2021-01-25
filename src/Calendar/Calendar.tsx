@@ -46,31 +46,17 @@ export const Calendar: React.FC = () => {
         today.add(1, 'month')
     }
 
+    const isSelected = (day: any) => {
+        return today.isSame(day, "day")
+    }
 
-    // function generateDay() {                                                                                         // 요일 박스 구현
-    //     for (let week = startWeek ; week <= endWeek ; week++) {
-    //         calendar.push(
-    //             <div className='row' key={week}>
-    //                 {
-    //                     Array(7).fill(0).map((n,i) => {
-    //                         let current = today.clone().week(week).startOf('week').add(n + i, 'd')
-    //                         let isSelected = today.format('YYYYMMDD') === current.format('YYYYMMDD') ? 'selected' : ''  // 오늘 날짜 표시
-    //                         let isGreyed = current.format('MM') === today.format('MM') ? '' : 'greyed'    // 현재 월이 아닐경우 일자를 회색으로 칠해준다.
-    //
-    //                         return (
-    //                             <div className={`box-day ${isGreyed} ${isSelected}` } key={i}>
-    //                                 <span className={ i === 0 ? 'font-day font-red' :( i === 6 ? 'font-day font-blue' : 'font-day')}>{current.format('D')}</span>
-    //                             </div>
-    //                         )
-    //                     })
-    //                 }
-    //             </div>
-    //         )
-    //     }
-    //     console.log('calendar', calendar)
-    //     return calendar
-    // }
+    const pastDay = (day: any) => {
+        return day.isBefore(new Date(), "day")
+    }
 
+    const isToday = (day: any) => {
+        return day.isSame(new Date(), "day")
+    }
     console.log('calendar', calendar)
     // Dom -------------------------------------------------------------------------------------------------------------
     return (
@@ -111,7 +97,7 @@ export const Calendar: React.FC = () => {
                                    className={index === 0 ? 'box-day font-red' : index === 6 ? 'box-day font-blue' : 'box-day'}
                                    onClick={() => setToday(day)}
                               >
-                                  <div>{day.format('D').toString()}</div>
+                                  <div className="font-day">{day.format('D').toString()}</div>
                               </div>
                               )
                             )
