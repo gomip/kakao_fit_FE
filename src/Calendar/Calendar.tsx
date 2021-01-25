@@ -38,48 +38,48 @@ export const Calendar: React.FC = () => {
 
     // Function --------------------------------------------------------------------------------------------------------
     const handleLeft = () => {                                                                                          // 이전 월
-        today.subtract(1, 'month')
-        console.log('a',today)
+        const res = today.clone().subtract(1,"month")
+        setToday(res)
     }
 
     const handleRight = () => {                                                                                         // 다음 월
-        today.add(1, 'month')
+        const res = today.clone().add(1,"month")
+        setToday(res)
     }
 
+    function curMonth() {
+        return today.format("MMM")
+    }
+    function curYear() {
+        return today.format("YYYY")
+    }
 
-    // function generateDay() {                                                                                         // 요일 박스 구현
-    //     for (let week = startWeek ; week <= endWeek ; week++) {
-    //         calendar.push(
-    //             <div className='row' key={week}>
-    //                 {
-    //                     Array(7).fill(0).map((n,i) => {
-    //                         let current = today.clone().week(week).startOf('week').add(n + i, 'd')
-    //                         let isSelected = today.format('YYYYMMDD') === current.format('YYYYMMDD') ? 'selected' : ''  // 오늘 날짜 표시
-    //                         let isGreyed = current.format('MM') === today.format('MM') ? '' : 'greyed'    // 현재 월이 아닐경우 일자를 회색으로 칠해준다.
-    //
-    //                         return (
-    //                             <div className={`box-day ${isGreyed} ${isSelected}` } key={i}>
-    //                                 <span className={ i === 0 ? 'font-day font-red' :( i === 6 ? 'font-day font-blue' : 'font-day')}>{current.format('D')}</span>
-    //                             </div>
-    //                         )
-    //                     })
-    //                 }
-    //             </div>
-    //         )
-    //     }
-    //     console.log('calendar', calendar)
-    //     return calendar
-    // }
+    function isSelected(day: any) {
+        return today.isSame(day, "day")
+    }
 
-    console.log('calendar', calendar)
+    function beforeToday(day: any) {                                                                                    // 이전 날짜들
+        return day.isBefore(new Date(), "day")
+    }
+
+    function isToday(day: any) {                                                                                        // 오늘 날짜
+        return day.isSame(new Date(), "day")
+    }
+
+    function dayStyles(day: any) {
+        if (beforeToday(day)) return "before"
+        if (isSelected(day)) return "selected"
+        if (isToday(day)) return "today"
+        return ""
+    }
     // Dom -------------------------------------------------------------------------------------------------------------
     return (
         <div className='calendar-wrapper'>
             {/* 년 월 시작 */}
             <div className='date-wrapper'>
-                <LeftOutlined onClick={handleLeft}/>
-                <span>{today.year()}. {monthName[today.month()]}</span>
-                <RightOutlined onClick={handleRight}/>
+                <div><LeftOutlined onClick={handleLeft}/></div>
+                <span>{curYear()}. {curMonth()}</span>
+                <div><RightOutlined onClick={handleRight}/></div>
             </div>
             {/* 년 월 끝 */}
 
