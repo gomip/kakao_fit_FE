@@ -49,18 +49,20 @@
 }
 
 .day-wrapper > .row {
-    margin: 10px 0;
+    /*margin: 10px 0;*/
     display: flex;
 }
 
 .day-wrapper * .box-day {
-    margin: 0 20px;
-    width: 100px;
-    height: 80px;
+    /*margin: 0 20px;*/
+    margin-left: -1px;
+    margin-top: -1px;
+    width: 140px;
+    height: 120px;
     background-color: white;
-    border-radius: 15px;
+    /*border-radius: 15px;*/
     border-width: 1px;
-    border-color: #707070;
+    border-color: #DCDCDC;
     border-style: solid;
 }
 
@@ -70,4 +72,12 @@
 
 .day-wrapper * .selected {
     border: 1px solid coral;
+}
+
+.day-wrapper * .font-day {
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 5px;
+    display: flex;
+    justify-content: flex-end;
 }
