@@ -8,32 +8,32 @@ import * as React from 'react'
 export const UserData = [
     {
         userId: '1',
-        // userName: '하입'
-        userName: 'data_1'
+        userName: 'data_1',
+        date: '2021-01-21'
     },
     {
         userId: '2',
-        // userName: '디안시'
-        userName: 'data_2'
+        userName: 'data_2',
+        date: '2021-01-22'
     },
     {
         userId: '3',
-        // userName: '띵준'
-        userName: 'data_3'
+        userName: 'data_3',
+        date: '2021-01-23'
     },
     {
         userId: '4',
-        // userName: '고밉'
-        userName: 'data_4'
+        userName: 'data_4',
+        date: '2021-01-24'
     },
     {
         userId: '5',
-        // userName: '낙낙'
-        userName: 'data_5'
+        userName: 'data_5',
+        date: '2021-01-25'
     },
     {
         userId: '6',
-        // userName: '크리세리아'
-        userName: 'data_6'
+        userName: 'data_6',
+        date: '2021-01-26'
     },
 ]

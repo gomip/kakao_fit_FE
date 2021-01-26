@@ -7,14 +7,14 @@
 .main-header-wrap{
     display: flex;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 20px;
     width: 1400px;
     height: 100%;
 }
 
 .main-header{
     font-weight: bold;
-    font-size: 30px;
+    font-size: 26px;
 }
 /* 헤더 스타일 끝 */
 

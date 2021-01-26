@@ -1,46 +1,56 @@
 import * as React from 'react'
-import {UserPage} from './UserPage'
 import './info.css'
-import {LogPage} from "./LogPage";
 import Select from 'react-select'
-import {UserData} from "./UserData";
+import {useLocation} from 'react-router-dom'
+import {UserData} from './UserData'
+
 /**
  *  2021.01.14 | gomip | created
+ *  2021.01.25 | gomip | 사용자 정보카드 작성
  */
 
 const {useState, useEffect} = React
 
-
+export interface SelectOption {
+  value: string
+  label: string
+}
 
 export const InfoPage: React.FC = () => {
     // State -----------------------------------------------------------------------------------------------------------
-    const [userOpt, setUserOpt] = useState([])
+    const [userOpt, setUserOpt] = useState<SelectOption[]>([])
+    const location = useLocation()
     // LifeCycle -------------------------------------------------------------------------------------------------------
     useEffect(() => {
-
-    }, [])
+      let tmp: SelectOption[] = []
+      UserData.map(item =>
+        tmp.push({
+          value: item.userId,
+          label: item.userName,
+        })
+      )
+      setUserOpt(tmp)
+    }, [location])
     // Function --------------------------------------------------------------------------------------------------------
+  console.log('userOpt', userOpt)
     // Dom -------------------------------------------------------------------------------------------------------------
     return (
         <div className='info-wrapper'>
-            {/* 사용자 선택 시작*/}
-            <div className="user-list">
-                <div className="user-text">사용자</div>
-                <Select
-                    className="user-list-select"
-                />
-            </div>
-            {/* 사용자 선택 끝*/}
+          {/* 사용자 선택 시작*/}
+          <div className="user-list">
+              <div className="user-text">사용자</div>
+              <Select
+                  className="user-list-select"
+                  options={userOpt}
+              />
+          </div>
+          {/* 사용자 선택 끝*/}
 
-            {/* 카드 정보 시작 */}
-            {/* 카드 정보 끝 */}
-            {/* 사용자 정보 시작 */}
-            {/*<UserPage />*/}
-            {/* 사용자 정보 끝 */}
+          {/* 정보 카드 시작 */}
+          <div>
 
-            {/*/!* 로그 시작 *!/*/}
-            {/*<LogPage />*/}
-            {/*/!* 로그 끝 *!/*/}
+          </div>
+          {/* 정보 카드 끝 */}
        </div>
     )
 }

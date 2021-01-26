@@ -10,8 +10,7 @@
     align-items: center;
     margin: 0 20px;
 
-    font-size: 26px;
-    font-weight: bold;
+    font-size: 20px;
 }
 
 /* 요일 css */
@@ -26,8 +25,7 @@
 }
 
 .week-wrapper * .font-week{
-    font-size: 26px;
-    font-weight: bold;
+    font-size: 20px;
 }
 
 .font-red{
@@ -40,7 +38,7 @@
 
 .hr-line{
     margin-top: 12px;
-    border: 1px solid black;
+    border: 1px solid #DCDCDC;
 }
 
 /* 일자 css */
@@ -58,7 +56,7 @@
     margin-left: -1px;
     margin-top: -1px;
     width: 140px;
-    height: 120px;
+    height: 100px;
     background-color: white;
     /*border-radius: 15px;*/
     border-width: 1px;
@@ -75,7 +73,6 @@
 }
 
 .day-wrapper * .font-day {
-    font-weight: bold;
     font-size: 16px;
     margin-right: 5px;
     display: flex;
