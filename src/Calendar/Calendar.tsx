@@ -111,7 +111,7 @@ export const Calendar: React.FC = () => {
                                    className={index === 0 ? 'box-day font-red' : index === 6 ? 'box-day font-blue' : 'box-day'}
                                    onClick={() => setToday(day)}
                               >
-                                  <div>{day.format('D').toString()}</div>
+                                  <div className="font-day">{day.format('D').toString()}</div>
                               </div>
                               )
                             )
