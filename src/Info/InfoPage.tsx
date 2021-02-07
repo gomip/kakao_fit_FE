@@ -3,6 +3,7 @@ import './info.css'
 import Select from 'react-select'
 import {useLocation} from 'react-router-dom'
 import {UserData} from './UserData'
+import {InfoCard} from "./InfoCard";
 
 /**
  *  2021.01.14 | gomip | created
@@ -47,8 +48,13 @@ export const InfoPage: React.FC = () => {
           {/* 사용자 선택 끝*/}
 
           {/* 정보 카드 시작 */}
-          <div>
-
+          <div className="data-list">
+              <InfoCard />
+              <InfoCard />
+              <InfoCard />
+              <InfoCard />
+              <InfoCard />
+              <InfoCard />
           </div>
           {/* 정보 카드 끝 */}
        </div>
