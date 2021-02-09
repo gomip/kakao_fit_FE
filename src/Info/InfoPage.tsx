@@ -3,60 +3,64 @@ import './info.css'
 import Select from 'react-select'
 import {useLocation} from 'react-router-dom'
 import {UserData} from './UserData'
-import {InfoCard} from "./InfoCard";
+import {InfoCard} from './InfoCard'
+import {API_HOST} from '../../utils/const'
+import axios from 'axios'
+import moment from 'moment'
+import {InfoCardData, SelectOption} from '../Main/MainPage'
 
 /**
  *  2021.01.14 | gomip | created
  *  2021.01.25 | gomip | 사용자 정보카드 작성
+ *  2021.02.09 | gomip | 사용자 조회 api 적용
  */
 
-const {useState, useEffect} = React
-
-export interface SelectOption {
-  value: string
-  label: string
+export interface InfoPageProps {
+  userOpt: SelectOption[]
+  info: InfoCardData[]
+  handleChange: (val?: any) => void
 }
 
-export const InfoPage: React.FC = () => {
-    // State -----------------------------------------------------------------------------------------------------------
-    const [userOpt, setUserOpt] = useState<SelectOption[]>([])
-    const location = useLocation()
-    // LifeCycle -------------------------------------------------------------------------------------------------------
-    useEffect(() => {
-      let tmp: SelectOption[] = []
-      UserData.map(item =>
-        tmp.push({
-          value: item.userId,
-          label: item.userName,
-        })
-      )
-      setUserOpt(tmp)
-    }, [location])
-    // Function --------------------------------------------------------------------------------------------------------
-  console.log('userOpt', userOpt)
-    // Dom -------------------------------------------------------------------------------------------------------------
-    return (
-        <div className='info-wrapper'>
-          {/* 사용자 선택 시작*/}
-          <div className="user-list">
-              <div className="user-text">사용자</div>
-              <Select
-                  className="user-list-select"
-                  options={userOpt}
-              />
-          </div>
-          {/* 사용자 선택 끝*/}
+export const InfoPage: React.FC<InfoPageProps> = (props) => {
+  // State -------------------------------------------------------------------------------------------------------------
+  const {userOpt, info, handleChange} = props
+  // LifeCycle ---------------------------------------------------------------------------------------------------------
 
-          {/* 정보 카드 시작 */}
-          <div className="data-list">
-              <InfoCard />
-              <InfoCard />
-              <InfoCard />
-              <InfoCard />
-              <InfoCard />
-              <InfoCard />
-          </div>
-          {/* 정보 카드 끝 */}
-       </div>
-    )
+  // Function ----------------------------------------------------------------------------------------------------------
+
+  // API ---------------------------------------------------------------------------------------------------------------
+
+  // Dom ---------------------------------------------------------------------------------------------------------------
+  return (
+    <div className='info-wrapper'>
+      {/* 사용자 선택 시작*/}
+      <div className="user-list">
+        <div className="user-text">사용자</div>
+        <Select
+          className="user-list-select"
+          options={userOpt}
+          onChange={handleChange}
+        />
+      </div>
+      {/* 사용자 선택 끝*/}
+
+      {/* 정보 카드 시작 */}
+      <div className="data-list">
+        {
+          info ?
+            info.map((it, idx) =>
+              <InfoCard key={idx} info={it} />
+            )
+            : <div>운동하세요</div>
+        }
+        {/*<InfoCard/>*/}
+        {/*<InfoCard/>*/}
+        {/*<InfoCard/>*/}
+        {/*<InfoCard/>*/}
+        {/*<InfoCard/>*/}
+        {/*<InfoCard/>*/}
+      </div>
+      {/* 정보 카드 끝 */}
+    </div>
+  )
 }

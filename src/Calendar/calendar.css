@@ -17,6 +17,8 @@
 .week-wrapper{
     margin-top: 35px;
     display: flex;
+    border-top: 1px solid #DCDCDC;
+    border-bottom: 1px solid #DCDCDC;
 }
 
 .week-wrapper > .box-week{
@@ -52,16 +54,19 @@
 }
 
 .day-wrapper * .box-day {
-    /*margin: 0 20px;*/
-    margin-left: -1px;
-    margin-top: -1px;
+    border-left: 1px solid #DCDCDC;
+    border-bottom: 1px solid #DCDCDC;
     width: 140px;
     height: 100px;
     background-color: white;
-    /*border-radius: 15px;*/
-    border-width: 1px;
-    border-color: #DCDCDC;
-    border-style: solid;
+}
+
+.day-wrapper * .box-right{
+    border-right: 1px solid #DCDCDC;
+}
+
+.day-wrapper * .box-top{
+    border-top:1px solid #DCDCDC;
 }
 
 .day-wrapper * .greyed {
@@ -75,6 +80,7 @@
 .day-wrapper * .font-day {
     font-size: 16px;
     margin-right: 5px;
-    display: flex;
-    justify-content: flex-end;
+    display: inline-block;
+    float: right;
+    /*justify-content: flex-end;*/
 }

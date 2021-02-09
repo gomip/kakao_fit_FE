@@ -1,5 +1,4 @@
 {
-  "homepage": "https://gomip.kakaofit.io",
   "name": "kakaofit-front",
   "version": "0.1.0",
   "private": true,
@@ -16,6 +15,7 @@
     "@types/react-router-dom": "^5.1.7",
     "@types/react-select": "^3.1.2",
     "antd": "^4.10.2",
+    "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",
     "main.css": "^2.1.0",
@@ -32,10 +32,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "parcel ./src/index.html -p 3001 --open",
-    "build": "react-scripts build",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "start": "parcel ./src/index.html -p 3001 --open"
   },
   "eslintConfig": {
     "extends": [
