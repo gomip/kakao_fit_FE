@@ -45,6 +45,9 @@ export const Calendar: React.FC<CalendarProps> = (props) => {
     setCalendar(tmpCal)
   }, [curDay])
 
+  useEffect(() => {
+    setToday(moment())
+  }, [location])
   // Function ----------------------------------------------------------------------------------------------------------
   const handleLeft = () => {                                                                                            // 이전 월
     const res = curDay.clone().subtract(1, 'month')
@@ -54,6 +57,42 @@ export const Calendar: React.FC<CalendarProps> = (props) => {
   const handleRight = () => {                                                                                           // 다음 월
     const res = curDay.clone().add(1, 'month')
     setCurDay(res)
+  }
+
+  const dayBoxStyles = (row: number, index: number, day: any) => {
+    let style = 'box-day'
+
+    // 달력 박스 기본 스타일 ----------------------------------------------------------------------------------------------
+    if (row === 0) {
+      if (index === 6) {
+        style = style + ' box-top box-right'
+      } else {
+        style = style + ' box-top'
+      }
+    } else {
+      if (index === 6) {
+        style = style + ' box-right'
+      }
+    }
+
+    if (day.format('MMM') !== curDay.format('MMM')) {
+      style = style + ' greyed'
+    }
+    return style
+  }
+
+  const dateStyles = (day: any) => {
+    let style = 'font-day'
+
+    if (day.isSame(new Date(), 'day')){
+      style = style + ' today'
+    }
+
+    if (day.format('MMM') !== curDay.format('MMM')) {
+      style = style + ' font-grey'
+    }
+
+    return style
   }
 
   function curMonth() {
@@ -99,7 +138,6 @@ export const Calendar: React.FC<CalendarProps> = (props) => {
         {
           dayName.map(item =>
             <div key={item} className='box-week'>
-              {/*<span className={ item === 'SUN' ? 'font-week font-red' : item === 'SAT' ? 'font-week font-blue' : 'font-week'}>{item}</span>*/}
               <span className='font-week'>{item}</span>
             </div>
           )
@@ -116,10 +154,10 @@ export const Calendar: React.FC<CalendarProps> = (props) => {
                   week.map((day: any, index: number) => (
                       // 날짜 입력시 표시
                       <div key={index}
-                           className={idx === 0 ? (index === 6 ? 'box-day box-top box-right' : 'box-top box-day') : (index === 6 ? 'box-day box-right' : 'box-day')}
+                           className={dayBoxStyles(idx,index,day)}
                            onClick={() => setCurDay(day)}
                       >
-                        <div className="font-day">{day.format('D').toString()}</div>
+                        <div className={dateStyles(day)}>{day.format('D').toString()}</div>
                       </div>
                     )
                   )

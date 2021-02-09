@@ -1,12 +1,7 @@
 import * as React from 'react'
 import './info.css'
 import Select from 'react-select'
-import {useLocation} from 'react-router-dom'
-import {UserData} from './UserData'
 import {InfoCard} from './InfoCard'
-import {API_HOST} from '../../utils/const'
-import axios from 'axios'
-import moment from 'moment'
 import {InfoCardData, SelectOption} from '../Main/MainPage'
 
 /**
@@ -53,12 +48,6 @@ export const InfoPage: React.FC<InfoPageProps> = (props) => {
             )
             : <div>운동하세요</div>
         }
-        {/*<InfoCard/>*/}
-        {/*<InfoCard/>*/}
-        {/*<InfoCard/>*/}
-        {/*<InfoCard/>*/}
-        {/*<InfoCard/>*/}
-        {/*<InfoCard/>*/}
       </div>
       {/* 정보 카드 끝 */}
     </div>

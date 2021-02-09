@@ -2,7 +2,7 @@ import * as React from 'react'
 import {MainHeader} from "./MainHeader"
 import './main.css'
 import 'antd/dist/antd.css'
-import {Row, Col} from 'antd'
+import {Col, Row} from 'antd'
 import {InfoPage} from "../Info/InfoPage";
 import {Calendar} from "../Calendar/Calendar";
 import axios from 'axios'
@@ -101,7 +101,8 @@ export const MainPage: React.FC = () => {
               )
               setRecHistory(tmp)
           }).catch(err => {
-              console.log('err', err)
+              console.log('err', err
+              )
         })
     }
     // Dom -------------------------------------------------------------------------------------------------------------
