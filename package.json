@@ -32,7 +32,8 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "parcel ./src/index.html -p 3001 --open"
+    "start": "parcel ./src/index.html -p 3001 --open",
+    "build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": [
