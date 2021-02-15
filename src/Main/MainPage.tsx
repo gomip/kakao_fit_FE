@@ -36,6 +36,7 @@ export const MainPage: React.FC = () => {
     const [info, setInfo] = useState<InfoCardData[]>([])                                                      // 개인 기록들 저장하는 state
     const [recHistory, setRecHistory] = useState<InfoCardData[]>([])                                          // 개인의 전체 기록들 저장
     const location = useLocation()
+    const [selectedDay, setSelectedDay] = useState<any>(moment())
     // LifeCycle -------------------------------------------------------------------------------------------------------
     useEffect(() => {
         getUser()
@@ -82,6 +83,7 @@ export const MainPage: React.FC = () => {
                     time: item.time
                 })
               )
+              console.log('tmp', tmp)
               setInfo(tmp)
           }).catch(err => {
             console.log('err', err)

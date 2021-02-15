@@ -4,6 +4,8 @@ import {LeftOutlined, RightOutlined} from '@ant-design/icons'
 import moment from 'moment'
 import {useLocation} from 'react-router-dom'
 import {InfoCardData} from '../Main/MainPage'
+import {Image} from 'antd'
+import banana from '../../public/banana.png'
 
 /**
  *  2021.01.14 | gomip | created
@@ -122,6 +124,12 @@ export const Calendar: React.FC<CalendarProps> = (props) => {
     return ''
   }
 
+  const drawBanana = (day: any): boolean => {
+    const found = recHistory.find(item => item.date === day.format('YYYY-MM-DD'))
+
+    if (found !== undefined) return true
+    else return false
+  }
   // Dom ---------------------------------------------------------------------------------------------------------------
   return (
     <div className='calendar-wrapper'>
@@ -158,6 +166,17 @@ export const Calendar: React.FC<CalendarProps> = (props) => {
                            onClick={() => setCurDay(day)}
                       >
                         <div className={dateStyles(day)}>{day.format('D').toString()}</div>
+                        {
+                          drawBanana(day)
+                          &&
+                          <div>
+                            <Image
+                                src={banana}
+                                width={80}
+                                preview={false}
+                            />
+                          </div>
+                        }
                       </div>
                     )
                   )
