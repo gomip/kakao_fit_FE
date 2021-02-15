@@ -6,7 +6,7 @@ import {Col, Row} from 'antd'
 import {InfoPage} from "../Info/InfoPage";
 import {Calendar} from "../Calendar/Calendar";
 import axios from 'axios'
-import {API_HOST} from '../../utils/const'
+import {API_HOST} from '../utils/const'
 import moment from 'moment'
 import {useLocation} from 'react-router-dom'
 
