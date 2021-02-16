@@ -85,7 +85,7 @@ export const MainPage: React.FC = () => {
         let tmp: InfoCardData[] = []
         res.data.map((item: any) =>
           tmp.push({
-            date: moment(item.record_date).format('YYYY-MM-DD'),
+            date: moment(item.record_date).utc().format('YYYY-MM-DD'),
             kcal: item.kcal,
             time: item.time,
           }),
@@ -102,7 +102,7 @@ export const MainPage: React.FC = () => {
         let tmp: InfoCardData[] = []
         res.data.map((item: any) =>
           tmp.push({
-            date: moment(item.record_date).format('YYYY-MM-DD'),
+            date: moment(item.record_date).utc().format('YYYY-MM-DD'),
             kcal: item.kcal,
             time: item.time,
           }),
