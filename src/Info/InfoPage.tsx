@@ -3,6 +3,7 @@ import './info.css'
 import Select from 'react-select'
 import {InfoCard} from './InfoCard'
 import {InfoCardData, SelectOption} from '../Main/MainPage'
+import moment from 'moment'
 
 /**
  *  2021.01.14 | gomip | created
@@ -24,7 +25,7 @@ export const InfoPage: React.FC<InfoPageProps> = (props) => {
   // Function ----------------------------------------------------------------------------------------------------------
 
   // API ---------------------------------------------------------------------------------------------------------------
-    console.log('info', info)
+
   // Dom ---------------------------------------------------------------------------------------------------------------
   return (
     <div className='info-wrapper'>

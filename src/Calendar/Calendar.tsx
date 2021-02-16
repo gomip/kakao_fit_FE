@@ -1,7 +1,7 @@
 import * as React from 'react'
 import './calendar.css'
 import {LeftOutlined, RightOutlined} from '@ant-design/icons'
-import moment from 'moment'
+import moment, {Moment} from 'moment'
 import {useLocation} from 'react-router-dom'
 import {InfoCardData} from '../Main/MainPage'
 import {Image} from 'antd'
@@ -10,23 +10,26 @@ import banana from '../../public/banana.png'
 /**
  *  2021.01.14 | gomip | created
  *  2021.02.09 | gomip | api를 통해 해당 유저의 전체 기록들 조
+ *  2021.02.15 | gomip | 날짜 선택을 props로 전달하도록 변경
  */
 
 const {useEffect, useState} = React
 
 export interface CalendarProps {
   recHistory: InfoCardData[]
+  selectedDay: any
+  handleSelectedDate: (day: any) => void
 }
 
 export const Calendar: React.FC<CalendarProps> = (props) => {
   // State -------------------------------------------------------------------------------------------------------------
+  const {recHistory, selectedDay, handleSelectedDate} = props
   const [calendar, setCalendar] = useState<any[]>([])                                                         // matrix of calendar
-  const [curDay, setCurDay] = useState(moment())                                                                        // currently selected day [default : today]
+  // const [curDay, setCurDay] = useState(moment())                                                                        // currently selected day [default : today]
   const [today, setToday] = useState(moment())                                                                          // today
-  const startWeek = curDay.clone().startOf('month').startOf('week')
-  const endWeek = curDay.clone().endOf('month').endOf('week')
+  const startWeek = moment(selectedDay).clone().startOf('month').startOf('week')
+  const endWeek = moment(selectedDay).clone().endOf('month').endOf('week')
 
-  const {recHistory} = props
   // const startWeek = curDay.clone().startOf('month').week()
   // const endWeek = curDay.clone().endOf('month').week() === 1 ? 53 : curDay.clone().endOf('month').week()
 
@@ -37,7 +40,7 @@ export const Calendar: React.FC<CalendarProps> = (props) => {
 
   // LifeCycle ---------------------------------------------------------------------------------------------------------
   useEffect(() => {
-    const day = startWeek.clone().subtract(1, 'd')
+    const day = moment(startWeek).clone().subtract(1, 'd')
     const tmpCal: any[] = []
     while (day.isBefore(endWeek, 'd')) {
       tmpCal.push(
@@ -45,25 +48,24 @@ export const Calendar: React.FC<CalendarProps> = (props) => {
       )
     }
     setCalendar(tmpCal)
-  }, [curDay])
+  }, [selectedDay])
 
   useEffect(() => {
     setToday(moment())
   }, [location])
   // Function ----------------------------------------------------------------------------------------------------------
   const handleLeft = () => {                                                                                            // 이전 월
-    const res = curDay.clone().subtract(1, 'month')
-    setCurDay(res)
+    const res = moment(selectedDay).clone().subtract(1, 'month')
+    handleSelectedDate(res)
   }
 
   const handleRight = () => {                                                                                           // 다음 월
-    const res = curDay.clone().add(1, 'month')
-    setCurDay(res)
+    const res = moment(selectedDay).clone().add(1, 'month')
+    handleSelectedDate(res)
   }
 
   const dayBoxStyles = (row: number, index: number, day: any) => {
     let style = 'box-day'
-
     // 달력 박스 기본 스타일 ----------------------------------------------------------------------------------------------
     if (row === 0) {
       if (index === 6) {
@@ -77,8 +79,12 @@ export const Calendar: React.FC<CalendarProps> = (props) => {
       }
     }
 
-    if (day.format('MMM') !== curDay.format('MMM')) {
+    if (day.format('MMM') !== moment(selectedDay).format('MMM')) {
       style = style + ' greyed'
+    }
+    // 날짜 선택시 초록색으로 border 입혀주기 -----------------------------------------------------------------------------------
+    if (moment(selectedDay).isSame(day, 'date')) {
+      style = style + ' day-selected'
     }
     return style
   }
@@ -90,7 +96,7 @@ export const Calendar: React.FC<CalendarProps> = (props) => {
       style = style + ' today'
     }
 
-    if (day.format('MMM') !== curDay.format('MMM')) {
+    if (day.format('MMM') !== moment(selectedDay).format('MMM')) {
       style = style + ' font-grey'
     }
 
@@ -98,31 +104,31 @@ export const Calendar: React.FC<CalendarProps> = (props) => {
   }
 
   function curMonth() {
-    return curDay.format('MMM')
+    return moment(selectedDay).format('MMM')
   }
 
   function curYear() {
-    return curDay.format('YYYY')
+    return moment(selectedDay).format('YYYY')
   }
-
-  function isSelected(day: any) {
-    return curDay.isSame(day, 'day')
-  }
-
-  function beforeToday(day: any) {                                                                                      // 이전 날짜들
-    return day.isBefore(new Date(), 'day')
-  }
-
-  function isToday(day: any) {                                                                                          // 오늘 날짜
-    return day.isSame(new Date(), 'day')
-  }
-
-  function dayStyles(day: any) {
-    if (beforeToday(day)) return 'before'
-    if (isSelected(day)) return 'selected'
-    if (isToday(day)) return 'today'
-    return ''
-  }
+  //
+  // function isSelected(day: any) {
+  //   return moment(selectedDay).isSame(day, 'day')
+  // }
+  //
+  // function beforeToday(day: any) {                                                                                      // 이전 날짜들
+  //   return day.isBefore(new Date(), 'day')
+  // }
+  //
+  // function isToday(day: any) {                                                                                          // 오늘 날짜
+  //   return day.isSame(new Date(), 'day')
+  // }
+  //
+  // function dayStyles(day: any) {
+  //   if (beforeToday(day)) return 'before'
+  //   if (isSelected(day)) return 'selected'
+  //   if (isToday(day)) return 'today'
+  //   return ''
+  // }
 
   const drawBanana = (day: any): boolean => {
     const found = recHistory.find(item => item.date === day.format('YYYY-MM-DD'))
@@ -163,7 +169,7 @@ export const Calendar: React.FC<CalendarProps> = (props) => {
                       // 날짜 입력시 표시
                       <div key={index}
                            className={dayBoxStyles(idx,index,day)}
-                           onClick={() => setCurDay(day)}
+                           onClick={() => handleSelectedDate(day)}
                       >
                         <div className={dateStyles(day)}>{day.format('D').toString()}</div>
                         {
@@ -171,6 +177,7 @@ export const Calendar: React.FC<CalendarProps> = (props) => {
                           &&
                           <div>
                             <Image
+                                style={{marginTop: '5px'}}
                                 src={banana}
                                 width={80}
                                 preview={false}

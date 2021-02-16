@@ -95,3 +95,7 @@
     color: white;
     border-radius: 50%;
 }
+
+.day-selected {
+    border: 3px solid lightgreen !important;
+}
