@@ -13,7 +13,7 @@ export const MainHeader: React.FC = () => {
         <div className='main-header-wrap'>
             <div>
                 {/*<p className='main-header'>카카오 링피트 체커</p>*/}
-                <p className='main-header'>Calendar-user</p>
+                <p className='main-header'>Ringfit Calendar</p>
             </div>
         </div>
     )
