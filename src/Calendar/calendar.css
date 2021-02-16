@@ -99,3 +99,11 @@
 .day-selected {
     border: 3px solid lightgreen !important;
 }
+
+.banana {
+    margin-top: 5px;
+}
+
+.not-this-month {
+    opacity: 0.5;
+}

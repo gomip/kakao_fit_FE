@@ -92,7 +92,7 @@ export const Calendar: React.FC<CalendarProps> = (props) => {
   const dateStyles = (day: any) => {
     let style = 'font-day'
 
-    if (day.isSame(new Date(), 'day')){
+    if (day.isSame(new Date(), 'day')) {
       style = style + ' today'
     }
 
@@ -109,6 +109,16 @@ export const Calendar: React.FC<CalendarProps> = (props) => {
 
   function curYear() {
     return moment(selectedDay).format('YYYY')
+  }
+
+  const bananaStyle = (day: any) => {
+    let style = 'banana'
+
+    if (moment(selectedDay).format('MMM') !== day.format('MMM')) {
+      style = style + ' not-this-month'
+    }
+
+    return style
   }
   //
   // function isSelected(day: any) {
@@ -133,8 +143,11 @@ export const Calendar: React.FC<CalendarProps> = (props) => {
   const drawBanana = (day: any): boolean => {
     const found = recHistory.find(item => item.date === day.format('YYYY-MM-DD'))
 
-    if (found !== undefined) return true
-    else return false
+    if (found !== undefined) {
+      return true
+    } else {
+      return false
+    }
   }
   // Dom ---------------------------------------------------------------------------------------------------------------
   return (
@@ -153,7 +166,7 @@ export const Calendar: React.FC<CalendarProps> = (props) => {
           dayName.map(item =>
             <div key={item} className='box-week'>
               <span className='font-week'>{item}</span>
-            </div>
+            </div>,
           )
         }
       </div>
@@ -168,7 +181,7 @@ export const Calendar: React.FC<CalendarProps> = (props) => {
                   week.map((day: any, index: number) => (
                       // 날짜 입력시 표시
                       <div key={index}
-                           className={dayBoxStyles(idx,index,day)}
+                           className={dayBoxStyles(idx, index, day)}
                            onClick={() => handleSelectedDate(day)}
                       >
                         <div className={dateStyles(day)}>{day.format('D').toString()}</div>
@@ -176,20 +189,20 @@ export const Calendar: React.FC<CalendarProps> = (props) => {
                           drawBanana(day)
                           &&
                           <div>
-                            <Image
-                                style={{marginTop: '5px'}}
-                                src={banana}
-                                width={80}
-                                preview={false}
-                            />
+                              <Image
+                                  className={bananaStyle(day)}
+                                  src={banana}
+                                  width={80}
+                                  preview={false}
+                              />
                           </div>
                         }
                       </div>
-                    )
+                    ),
                   )
                 }
               </div>
-            )
+            ),
           )
           : null
         }
