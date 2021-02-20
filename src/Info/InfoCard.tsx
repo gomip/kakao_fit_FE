@@ -25,8 +25,6 @@ export const InfoCard: React.FC<InfoCardProps> = (props) => {
   useEffect(() => {
     let tmp = info.time
     if (tmp > 60) {
-      console.log('hour', hour)
-      console.log('im here', info.date, tmp)
       let time = tmp.toString().split(".")
 
       let a = parseInt(tmp.toString().split(".")[0]) / 60
