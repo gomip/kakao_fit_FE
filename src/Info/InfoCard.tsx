@@ -53,7 +53,7 @@ export const InfoCard: React.FC<InfoCardProps> = (props) => {
       <div className='card-wrapper'>
         <pre>Date : {info.date}</pre>
         <pre>Kcal : {info.kcal} kcal</pre>
-        <pre>Time : {info.time > 60 && hour + ' hr'} {min} min {sec} sec</pre>
+        <pre>Time : {info.time > 60 && hour + ' hr '}{min} min {sec ? sec : 0} sec</pre>
       </div>
     </Card>
   )
