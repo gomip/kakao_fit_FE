@@ -26,6 +26,7 @@ export interface InfoCardData {
   date: string
   kcal: number
   time: number
+  path: string
 }
 
 const {useState, useEffect} = React
@@ -88,6 +89,7 @@ export const MainPage: React.FC = () => {
             date: moment(item.record_date).utc().format('YYYY-MM-DD'),
             kcal: item.kcal,
             time: item.time,
+            path: item.path,
           }),
         )
         setInfo(tmp)
@@ -105,6 +107,7 @@ export const MainPage: React.FC = () => {
             date: moment(item.record_date).utc().format('YYYY-MM-DD'),
             kcal: item.kcal,
             time: item.time,
+            path: item.path,
           }),
         )
         setRecHistory(tmp)
