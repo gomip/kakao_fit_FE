@@ -13,11 +13,39 @@ export interface InfoCardProps {
   info: InfoCardData
 }
 
+const {useState, useEffect} = React
+
 export const InfoCard: React.FC<InfoCardProps> = (props) => {
   // State -------------------------------------------------------------------------------------------------------------
   const {info} = props
+  const [hour, setHour] = useState('0')
+  const [min, setMin] = useState('')
+  const [sec, setSec] = useState('')
   // Function ----------------------------------------------------------------------------------------------------------
+  useEffect(() => {
+    let tmp = info.time
+    if (tmp > 60) {
+      console.log('hour', hour)
+      console.log('im here', info.date, tmp)
+      let time = tmp.toString().split(".")
 
+      let a = parseInt(tmp.toString().split(".")[0]) / 60
+      setHour(a.toString().split(".")[0])
+
+      let b = (parseInt(time[0]) % 60).toString()
+      setMin(b)
+
+      let c = time[1]
+      setSec(c)
+
+    } else {
+      let a = tmp.toString().split(".")[0]
+      setMin(a)
+      let b = tmp.toString().split(".")[1]
+      setSec(b)
+    }
+
+  }, [info])
   // Dom ---------------------------------------------------------------------------------------------------------------
   return (
     <Card
@@ -27,7 +55,7 @@ export const InfoCard: React.FC<InfoCardProps> = (props) => {
       <div className='card-wrapper'>
         <pre>Date : {info.date}</pre>
         <pre>Kcal : {info.kcal} kcal</pre>
-        <pre>Time : {info.time} min</pre>
+        <pre>Time : {info.time > 60 && hour + ' hr'} {min} min {sec} sec</pre>
       </div>
     </Card>
   )
