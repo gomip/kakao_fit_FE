@@ -80,7 +80,6 @@ export const MainPage: React.FC = () => {
   }
 
   const getRecordByWeek = (id: string) => {                                                                             // 오늘 날짜 기준으로 우측 카드에 필요한 데이터들 조회
-    const today = moment()
     axios.get(API_HOST + '/records/week/' + id + '/' + selectedDay.format('YYYY-MM-DD'))
       .then(res => {
         let tmp: InfoCardData[] = []
