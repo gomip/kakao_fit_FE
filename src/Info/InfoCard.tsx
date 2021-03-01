@@ -48,7 +48,7 @@ export const InfoCard: React.FC<InfoCardProps> = (props) => {
   return (
     <Card
       style={{marginTop: '10px'}}
-      cover={<img alt="example" src={info.path ? info.path : "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"}/>}
+      // cover={<img alt="example" src={info.path ? info.path : "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"}/>}
     >
       <div className='card-wrapper'>
         <pre>Date : {info.date}</pre>
